@@ -1,34 +1,20 @@
-import { useState } from "react";
-import { Button, StyleSheet, Text, View } from "react-native";
+import React from "react";
+import { ScrollView, StyleSheet, Text } from "react-native";
+import { Colors, Layout } from "../constants";
 
-export default function Index() {
-  const [message, setMessage] = useState("");
-
-  const handlePress = () => {
-    console.log("Button pressed!");
-    setMessage("Кнопка была нажата!");
-  };
-
+export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Привет</Text>
-      <Button title="Нажми на меня" onPress={handlePress} />
-      <Text>{message}</Text>
-    </View>
+    <ScrollView style={styles.container}>
+      <Text>Привет Мир!</Text>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-    backgroundColor: "#f5f5f5",
-  },
-  title: {
-    fontSize: 32,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginVertical: 30,
-    color: "#2c3e50",
+    backgroundColor: Colors.background,
+    padding: Layout.spacing.md,
+    paddingBlockStart: Layout.spacing.xxl,
   },
 });
