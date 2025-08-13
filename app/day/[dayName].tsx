@@ -8,6 +8,7 @@ export default function DayScreen() {
     <View>
       <ScrollView>
         <Text>День: {dayName}</Text>
+        <Text>иконка Arrow</Text>
       </ScrollView>
     </View>
   );

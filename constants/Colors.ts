@@ -25,7 +25,7 @@ export const Colors = {
   divider: "#F8E8D8",
 
   // Состояния
-  success: "#A8C686",
+  success: "#3ba90fff",
   warning: "#F4B942",
   error: "#E67E58",
 

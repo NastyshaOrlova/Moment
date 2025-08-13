@@ -1,0 +1,37 @@
+import { Dimensions, Image, TouchableOpacity } from "react-native";
+import { iconStyles, styles } from "./Icon.styles";
+
+console.log("Scale:", Dimensions.get("window").scale);
+
+interface IconProps {
+  name: "done" | "doubleDone" | "arrow" | "arrowBottom";
+  onPress?: () => void;
+}
+
+export function Icon({ name, onPress }: IconProps) {
+  const iconSource = getIconSource(name);
+  const iconStyle = [
+    styles.base,
+    iconStyles[name as keyof typeof iconStyles] || {},
+  ];
+
+  if (onPress) {
+    return (
+      <TouchableOpacity onPress={onPress}>
+        <Image source={iconSource} style={iconStyle} />
+      </TouchableOpacity>
+    );
+  }
+
+  return <Image source={iconSource} style={iconStyle} />;
+}
+
+function getIconSource(name: IconProps["name"]) {
+  const icons = {
+    done: require("@/assets/images/IconDone.png"),
+    doubleDone: require("@/assets/images/IconDoubleDone.png"),
+    arrow: require("@/assets/images/IconArrow.png"),
+    arrowBottom: require("@/assets/images/IconArrowBottom.png"),
+  } as const;
+  return icons[name];
+}

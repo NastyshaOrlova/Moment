@@ -1,3 +1,4 @@
+import { Icon } from "@/components/ui";
 import { router } from "expo-router";
 import { Text, TouchableOpacity, View } from "react-native";
 import { styles } from "./DayItem.style";
@@ -27,10 +28,18 @@ export function DayItem({
     >
       <View style={styles.titleContainer}>
         <Text style={styles.baseText}>{title}</Text>
-        {isCompleted && <Text>✅</Text>}
+        {isCompleted && <Icon name="doubleDone" />}
       </View>
       <TouchableOpacity>
-        <Text>иконка</Text>
+        <Icon
+          name="arrowBottom"
+          onPress={() => {
+            router.push({
+              pathname: "/day/[dayName]",
+              params: { dayName },
+            });
+          }}
+        />
       </TouchableOpacity>
     </TouchableOpacity>
   );
