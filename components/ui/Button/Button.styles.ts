@@ -7,6 +7,7 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     borderRadius: 12,
+    fontSize: 16,
   },
   baseText: {
     fontWeight: "600",
@@ -20,7 +21,6 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   primaryText: {
-    fontSize: 18,
     color: Colors.text,
   },
 
@@ -30,7 +30,6 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.primary,
   },
   secondaryText: {
-    fontSize: 16,
     color: Colors.text,
   },
 });

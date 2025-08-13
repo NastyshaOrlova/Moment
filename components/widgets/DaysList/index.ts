@@ -1,2 +1,1 @@
-export { DayItem } from "./DayItem";
 export { DaysList } from "./DaysList";
