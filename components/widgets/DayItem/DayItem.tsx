@@ -30,17 +30,7 @@ export function DayItem({
         <Text style={styles.baseText}>{title}</Text>
         {isCompleted && <Icon name="doubleDone" />}
       </View>
-      <TouchableOpacity>
-        <Icon
-          name="arrowBottom"
-          onPress={() => {
-            router.push({
-              pathname: "/day/[dayName]",
-              params: { dayName },
-            });
-          }}
-        />
-      </TouchableOpacity>
+      <Icon name="arrow" />
     </TouchableOpacity>
   );
 }
