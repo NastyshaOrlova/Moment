@@ -1,5 +1,6 @@
 import { DayHeader } from "@/components/widgets";
 import { DayContent } from "@/components/widgets/DayContent";
+import { DayFooter } from "@/components/widgets/DayFooter";
 import { Colors, dayTitles } from "@/constants";
 import { useLocalSearchParams } from "expo-router";
 import { StyleSheet, View } from "react-native";
@@ -18,6 +19,7 @@ export default function DayScreen() {
         isCompleted={completedDays.includes(dayName as string)}
       />
       <DayContent />
+      <DayFooter />
     </View>
   );
 }

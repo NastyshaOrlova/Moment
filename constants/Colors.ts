@@ -32,4 +32,5 @@ export const Colors = {
   // Дополнительные оттенки
   highlight: "#FFE4D1",
   overlay: "rgba(25, 9, 51, 0.1)",
+  todo: "#fcf1e6ff",
 };

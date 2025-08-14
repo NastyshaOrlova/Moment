@@ -3,7 +3,7 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.card,
+    backgroundColor: Colors.todo,
     padding: 12,
     borderBottomWidth: 1,
     borderColor: Colors.background,
