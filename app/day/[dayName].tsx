@@ -3,7 +3,12 @@ import { DayContent } from "@/components/widgets/DayContent";
 import { DayFooter } from "@/components/widgets/DayFooter";
 import { Colors, dayTitles } from "@/constants";
 import { useLocalSearchParams } from "expo-router";
-import { StyleSheet, View } from "react-native";
+import {
+  Keyboard,
+  StyleSheet,
+  TouchableWithoutFeedback,
+  View,
+} from "react-native";
 
 const completedDays = ["monday", "tuesday"];
 
@@ -13,14 +18,16 @@ export default function DayScreen() {
   const dayTitle = dayTitles[dayName as keyof typeof dayTitles] || dayName;
 
   return (
-    <View style={styles.container}>
-      <DayHeader
-        title={dayTitle}
-        isCompleted={completedDays.includes(dayName as string)}
-      />
-      <DayContent />
-      <DayFooter />
-    </View>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <View style={styles.container}>
+        <DayHeader
+          title={dayTitle}
+          isCompleted={completedDays.includes(dayName as string)}
+        />
+        <DayContent />
+        <DayFooter />
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
