@@ -2,6 +2,7 @@ import { DayHeader } from "@/components/widgets";
 import { DayContent } from "@/components/widgets/DayContent";
 import { DayFooter } from "@/components/widgets/DayFooter";
 import { Colors, dayTitles } from "@/constants";
+import { RootState } from "@/store";
 import { useLocalSearchParams } from "expo-router";
 import {
   Keyboard,
@@ -9,13 +10,16 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
-
-const completedDays = ["monday", "tuesday"];
+import { useSelector } from "react-redux";
 
 export default function DayScreen() {
   const { dayName } = useLocalSearchParams();
 
   const dayTitle = dayTitles[dayName as keyof typeof dayTitles] || dayName;
+
+  const completedDays = useSelector(
+    (state: RootState) => state.diary.completedDays
+  );
 
   return (
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
@@ -25,7 +29,7 @@ export default function DayScreen() {
           isCompleted={completedDays.includes(dayName as string)}
         />
         <DayContent />
-        <DayFooter />
+        <DayFooter dayName={dayName as string} />
       </View>
     </TouchableWithoutFeedback>
   );

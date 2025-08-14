@@ -32,4 +32,8 @@ export const styles = StyleSheet.create({
   secondaryText: {
     color: Colors.text,
   },
+
+  disabled: {
+    backgroundColor: "#dededeff",
+  },
 });

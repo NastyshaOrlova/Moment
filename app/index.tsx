@@ -1,12 +1,16 @@
 import { Button } from "@/components/ui";
 import { DaysList } from "@/components/widgets";
+import { RootState } from "@/store";
 import React from "react";
 import { StyleSheet, View } from "react-native";
+import { useSelector } from "react-redux";
 import { Colors } from "../constants";
 
-const completedDays = ["monday", "tuesday"];
-
 export default function App() {
+  const completedDays = useSelector(
+    (state: RootState) => state.diary.completedDays
+  );
+
   return (
     <View style={styles.container}>
       <DaysList completedDays={completedDays} onDayComplete={() => {}} />
