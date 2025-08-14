@@ -3,11 +3,15 @@ import { AddMomentSection } from "../AddMomentSection/AddMomentSection";
 import { MomentsList } from "../MomentsList";
 import { styles } from "./DayContent.style";
 
-export function DayContent() {
+export interface DayContentProps {
+  dayName: string;
+}
+
+export function DayContent({ dayName }: DayContentProps) {
   return (
     <View style={[styles.container]}>
-      <AddMomentSection />
-      <MomentsList />
+      <AddMomentSection dayName={dayName} />
+      <MomentsList dayName={dayName} />
     </View>
   );
 }

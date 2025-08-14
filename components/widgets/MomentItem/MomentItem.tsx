@@ -1,10 +1,13 @@
 import { Text, View } from "react-native";
-import { styles } from "./MomentItem.style";
 
-export function MomentItem() {
+interface MomentItemProps {
+  description: string;
+}
+
+export function MomentItem({ description }: MomentItemProps) {
   return (
-    <View style={[styles.container]}>
-      <Text>Один момент</Text>
+    <View>
+      <Text>{description}</Text>
     </View>
   );
 }

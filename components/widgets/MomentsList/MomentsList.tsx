@@ -1,12 +1,27 @@
+import { RootState } from "@/store";
 import { Text, View } from "react-native";
+import { useSelector } from "react-redux";
 import { MomentItem } from "../MomentItem";
 import { styles } from "./MomentsList.style";
 
-export function MomentsList() {
+interface MomentsListProps {
+  dayName: string;
+}
+
+export function MomentsList({ dayName }: MomentsListProps) {
+  const moments = useSelector(
+    (state: RootState) => state.diary.days[dayName]?.moments || []
+  );
+
   return (
     <View style={[styles.container]}>
-      <Text>todo: Массив моментов</Text>
-      <MomentItem />
+      {moments.length === 0 ? (
+        <Text>Пока нет моментов</Text>
+      ) : (
+        moments.map((moment) => (
+          <MomentItem key={moment.id} description={moment.description} />
+        ))
+      )}
     </View>
   );
 }

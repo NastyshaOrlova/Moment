@@ -28,7 +28,7 @@ export default function DayScreen() {
           title={dayTitle}
           isCompleted={completedDays.includes(dayName as string)}
         />
-        <DayContent />
+        <DayContent dayName={dayName as string} />
         <DayFooter dayName={dayName as string} />
       </View>
     </TouchableWithoutFeedback>

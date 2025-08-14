@@ -1,11 +1,11 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, nanoid, PayloadAction } from "@reduxjs/toolkit";
 
 export interface DiaryState {
   completedDays: string[];
   days: {
     [dayName: string]: {
       moments: {
-        id: number;
+        id: string;
         description: string;
       }[];
     };
@@ -27,8 +27,20 @@ const diarySlice = createSlice({
         state.completedDays.push(dayName);
       }
     },
+    addMoment: (
+      state,
+      action: PayloadAction<{ dayName: string; description: string }>
+    ) => {
+      const { dayName, description } = action.payload;
+      const newMoment = { id: nanoid(), description };
+      if (state.days[dayName]) {
+        state.days[dayName].moments.push(newMoment);
+      } else {
+        state.days[dayName] = { moments: [newMoment] };
+      }
+    },
   },
 });
 
-export const { completeDay } = diarySlice.actions;
+export const { completeDay, addMoment } = diarySlice.actions;
 export default diarySlice.reducer;
