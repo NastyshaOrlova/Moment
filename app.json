@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "MyApp",
-    "slug": "MyApp",
+    "name": "Moment",
+    "slug": "Moment",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "myapp",
+    "scheme": "moment",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
