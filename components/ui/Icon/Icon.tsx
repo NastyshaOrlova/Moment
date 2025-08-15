@@ -1,19 +1,22 @@
-import { Dimensions, Image, TouchableOpacity } from "react-native";
+import { Image, TouchableOpacity } from "react-native";
 import { iconStyles, styles } from "./Icon.styles";
-
-console.log("Scale:", Dimensions.get("window").scale);
 
 interface IconProps {
   name: "done" | "doubleDone" | "arrow" | "arrowBottom" | "delete";
   onPress?: () => void;
+  hidden?: boolean;
 }
 
-export function Icon({ name, onPress }: IconProps) {
+export function Icon({ name, onPress, hidden }: IconProps) {
   const iconSource = getIconSource(name);
   const iconStyle = [
     styles.base,
     iconStyles[name as keyof typeof iconStyles] || {},
   ];
+
+  if (hidden) {
+    return null;
+  }
 
   if (onPress) {
     return (
