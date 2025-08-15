@@ -2,6 +2,7 @@ import { Button } from "@/components/ui";
 import { DaysList } from "@/components/widgets";
 import { RootState } from "@/store";
 import { clearAll } from "@/store/slices/diarySlice";
+import { downloadWeeklyReport } from "@/utils/";
 import { confirmAction } from "@/utils/alerts";
 import React from "react";
 import { StyleSheet, View } from "react-native";
@@ -15,6 +16,8 @@ export default function AllDaysScreen() {
     (state: RootState) => state.diary.completedDays
   );
 
+  const daysData = useSelector((state: RootState) => state.diary.days);
+
   const handleClearAll = () => {
     confirmAction(
       "Очистить неделю?",
@@ -23,11 +26,15 @@ export default function AllDaysScreen() {
     );
   };
 
+  const handleDownload = () => {
+    downloadWeeklyReport(daysData);
+  };
+
   return (
     <View style={styles.container}>
       <DaysList completedDays={completedDays} onDayComplete={() => {}} />
       <View style={styles.buttonContainer}>
-        <Button title="Скачать" onPress={() => {}} variant="primary" />
+        <Button title="Скачать" onPress={handleDownload} variant="primary" />
         <Button title="Очистить" onPress={handleClearAll} variant="primary" />
       </View>
     </View>
