@@ -8,6 +8,15 @@ export const styles = StyleSheet.create({
     width: "100%",
     height: 60,
     alignSelf: "center",
+    justifyContent: "center",
     padding: 12,
+  },
+  completedContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  completedText: {
+    color: "#827676ff",
   },
 });

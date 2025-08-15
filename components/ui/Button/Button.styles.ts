@@ -32,6 +32,14 @@ export const styles = StyleSheet.create({
   secondaryText: {
     color: Colors.text,
   },
+  ghost: {
+    backgroundColor: "transparent",
+  },
+  ghostText: {
+    color: Colors.primary,
+    textDecorationLine: "underline",
+    fontWeight: "400",
+  },
 
   disabled: {
     backgroundColor: "#dededeff",

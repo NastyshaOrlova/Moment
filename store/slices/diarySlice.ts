@@ -27,6 +27,12 @@ const diarySlice = createSlice({
         state.completedDays.push(dayName);
       }
     },
+    uncompleteDay: (state, action: PayloadAction<string>) => {
+      const dayName = action.payload;
+      state.completedDays = state.completedDays.filter(
+        (name) => name !== dayName
+      );
+    },
     addMoment: (
       state,
       action: PayloadAction<{ dayName: string; description: string }>
@@ -53,5 +59,6 @@ const diarySlice = createSlice({
   },
 });
 
-export const { completeDay, addMoment, deleteMoment } = diarySlice.actions;
+export const { completeDay, uncompleteDay, addMoment, deleteMoment } =
+  diarySlice.actions;
 export default diarySlice.reducer;

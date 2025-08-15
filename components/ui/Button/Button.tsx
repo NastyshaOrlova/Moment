@@ -5,23 +5,16 @@ import { styles } from "./Button.styles";
 interface ButtonProps {
   title: string;
   onPress: () => void;
-  variant: "primary" | "secondary";
-  disabled?: boolean;
+  variant: "primary" | "secondary" | "ghost";
 }
 
 export const Button = ({
   title,
   onPress,
   variant = "primary",
-  disabled = false,
 }: ButtonProps) => {
   return (
-    <TouchableOpacity
-      style={[styles.base, styles[variant], disabled && styles.disabled]}
-      onPress={disabled ? undefined : onPress}
-      activeOpacity={disabled ? 1 : 0.7}
-      disabled={disabled}
-    >
+    <TouchableOpacity style={[styles.base, styles[variant]]} onPress={onPress}>
       <Text style={[styles.baseText, styles[`${variant}Text`]]}>{title}</Text>
     </TouchableOpacity>
   );
