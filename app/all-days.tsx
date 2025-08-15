@@ -2,6 +2,7 @@ import { Button } from "@/components/ui";
 import { DaysList } from "@/components/widgets";
 import { RootState } from "@/store";
 import { clearAll } from "@/store/slices/diarySlice";
+import { confirmAction } from "@/utils/alerts";
 import React from "react";
 import { StyleSheet, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,7 +16,11 @@ export default function AllDaysScreen() {
   );
 
   const handleClearAll = () => {
-    dispatch(clearAll());
+    confirmAction(
+      "Очистить неделю?",
+      "Все моменты и завершенные дни будут удалены безвозвратно.",
+      () => dispatch(clearAll())
+    );
   };
 
   return (
