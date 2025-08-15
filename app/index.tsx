@@ -1,37 +1,17 @@
-import { Button } from "@/components/ui";
-import { DaysList } from "@/components/widgets";
-import { RootState } from "@/store";
-import React from "react";
-import { StyleSheet, View } from "react-native";
-import { useSelector } from "react-redux";
-import { Colors } from "../constants";
+import { getCurrentDayName } from "@/utils";
+import { router } from "expo-router";
+import { useEffect } from "react";
+import { View } from "react-native";
 
 export default function App() {
-  const completedDays = useSelector(
-    (state: RootState) => state.diary.completedDays
-  );
+  useEffect(() => {
+    const currentDay = getCurrentDayName();
+    const timer = setTimeout(() => {
+      router.replace(`/day/${currentDay}`);
+    }, 50);
 
-  return (
-    <View style={styles.container}>
-      <DaysList completedDays={completedDays} onDayComplete={() => {}} />
-      <View style={styles.buttonContainer}>
-        <Button title="Скачать" onPress={() => {}} variant="primary" />
-        <Button title="Очистить" onPress={() => {}} variant="primary" />
-      </View>
-    </View>
-  );
+    return () => clearTimeout(timer);
+  }, []);
+
+  return <View />;
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: "center",
-    backgroundColor: Colors.background,
-    paddingTop: 28,
-  },
-  buttonContainer: {
-    flexDirection: "row",
-    gap: 15,
-    marginTop: 20,
-  },
-});

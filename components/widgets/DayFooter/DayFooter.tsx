@@ -16,7 +16,7 @@ export function DayFooter({ dayName }: { dayName: string }) {
 
   const handleComplete = () => {
     dispatch(completeDay(dayName));
-    router.back();
+    router.replace("/all-days");
   };
 
   return (

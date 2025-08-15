@@ -1,8 +1,9 @@
 import { Button, TextArea } from "@/components/ui";
+import { RootState } from "@/store";
 import { addMoment } from "@/store/slices/diarySlice";
 import { useState } from "react";
 import { View } from "react-native";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 interface AddMomentSectionProps {
   dayName: string;
@@ -11,6 +12,14 @@ interface AddMomentSectionProps {
 export function AddMomentSection({ dayName }: AddMomentSectionProps) {
   const [inputText, setInputText] = useState("");
   const dispatch = useDispatch();
+
+  const completedDays = useSelector(
+    (state: RootState) => state.diary.completedDays
+  );
+  const isDayCompleted = completedDays.includes(dayName);
+  if (isDayCompleted) {
+    return null;
+  }
 
   const handleAddMoment = () => {
     if (inputText.trim()) {

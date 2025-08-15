@@ -1,0 +1,1 @@
+export { getCurrentDayName } from "./getCurrentDayName";
