@@ -18,9 +18,12 @@ export function MomentsList({ dayName }: MomentsListProps) {
       {moments.length === 0 ? (
         <Text>Пока нет моментов</Text>
       ) : (
-        moments.map((moment) => (
-          <MomentItem key={moment.id} description={moment.description} />
-        ))
+        moments
+          .slice()
+          .reverse()
+          .map((moment) => (
+            <MomentItem key={moment.id} description={moment.description} />
+          ))
       )}
     </View>
   );

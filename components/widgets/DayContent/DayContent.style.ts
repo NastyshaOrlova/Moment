@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.card,
     maxWidth: 700,
     width: "100%",
-    height: 400,
+    minHeight: 400,
     padding: 12,
   },
 });

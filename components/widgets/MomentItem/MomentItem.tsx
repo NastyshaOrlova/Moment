@@ -1,4 +1,5 @@
 import { Text, View } from "react-native";
+import { styles } from "./MomentItem.style";
 
 interface MomentItemProps {
   description: string;
@@ -6,7 +7,8 @@ interface MomentItemProps {
 
 export function MomentItem({ description }: MomentItemProps) {
   return (
-    <View>
+    <View style={styles.container}>
+      <Text style={styles.bullet}>-</Text>
       <Text>{description}</Text>
     </View>
   );
