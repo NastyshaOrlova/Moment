@@ -1,22 +1,29 @@
 import { Button } from "@/components/ui";
 import { DaysList } from "@/components/widgets";
 import { RootState } from "@/store";
+import { clearAll } from "@/store/slices/diarySlice";
 import React from "react";
 import { StyleSheet, View } from "react-native";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Colors } from "../constants";
 
 export default function AllDaysScreen() {
+  const dispatch = useDispatch();
+
   const completedDays = useSelector(
     (state: RootState) => state.diary.completedDays
   );
+
+  const handleClearAll = () => {
+    dispatch(clearAll());
+  };
 
   return (
     <View style={styles.container}>
       <DaysList completedDays={completedDays} onDayComplete={() => {}} />
       <View style={styles.buttonContainer}>
         <Button title="Скачать" onPress={() => {}} variant="primary" />
-        <Button title="Очистить" onPress={() => {}} variant="primary" />
+        <Button title="Очистить" onPress={handleClearAll} variant="primary" />
       </View>
     </View>
   );

@@ -33,6 +33,10 @@ const diarySlice = createSlice({
         (name) => name !== dayName
       );
     },
+    clearAll: (state) => {
+      state.completedDays = [];
+      state.days = {};
+    },
     addMoment: (
       state,
       action: PayloadAction<{ dayName: string; description: string }>
@@ -59,6 +63,6 @@ const diarySlice = createSlice({
   },
 });
 
-export const { completeDay, uncompleteDay, addMoment, deleteMoment } =
+export const { completeDay, uncompleteDay, clearAll, addMoment, deleteMoment } =
   diarySlice.actions;
 export default diarySlice.reducer;
