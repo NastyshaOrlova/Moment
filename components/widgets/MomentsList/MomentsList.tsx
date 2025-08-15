@@ -22,7 +22,12 @@ export function MomentsList({ dayName }: MomentsListProps) {
           .slice()
           .reverse()
           .map((moment) => (
-            <MomentItem key={moment.id} description={moment.description} />
+            <MomentItem
+              key={moment.id}
+              dayName={dayName}
+              momentId={moment.id}
+              description={moment.description}
+            />
           ))
       )}
     </View>

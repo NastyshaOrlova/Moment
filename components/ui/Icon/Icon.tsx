@@ -4,7 +4,7 @@ import { iconStyles, styles } from "./Icon.styles";
 console.log("Scale:", Dimensions.get("window").scale);
 
 interface IconProps {
-  name: "done" | "doubleDone" | "arrow" | "arrowBottom";
+  name: "done" | "doubleDone" | "arrow" | "arrowBottom" | "delete";
   onPress?: () => void;
 }
 
@@ -32,6 +32,7 @@ function getIconSource(name: IconProps["name"]) {
     doubleDone: require("@/assets/images/IconDoubleDone.png"),
     arrow: require("@/assets/images/IconArrow.png"),
     arrowBottom: require("@/assets/images/IconArrowBottom.png"),
+    delete: require("@/assets/images/IconDelete.png"),
   } as const;
   return icons[name];
 }

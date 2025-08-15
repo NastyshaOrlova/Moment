@@ -39,8 +39,19 @@ const diarySlice = createSlice({
         state.days[dayName] = { moments: [newMoment] };
       }
     },
+    deleteMoment: (
+      state,
+      action: PayloadAction<{ dayName: string; momentId: string }>
+    ) => {
+      const { dayName, momentId } = action.payload;
+      if (state.days[dayName]) {
+        state.days[dayName].moments = state.days[dayName].moments.filter(
+          (moment) => moment.id !== momentId
+        );
+      }
+    },
   },
 });
 
-export const { completeDay, addMoment } = diarySlice.actions;
+export const { completeDay, addMoment, deleteMoment } = diarySlice.actions;
 export default diarySlice.reducer;

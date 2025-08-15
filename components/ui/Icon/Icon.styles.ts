@@ -21,4 +21,10 @@ export const iconStyles = {
     width: 20,
     height: 20,
   },
+  delete: {
+    width: 20,
+    height: 20,
+    tintColor: Colors.grey,
+    marginLeft: 5,
+  },
 };
