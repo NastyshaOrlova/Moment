@@ -22,6 +22,7 @@ export default function AllDaysScreen() {
     confirmAction(
       "Очистить неделю?",
       "Все моменты и завершенные дни будут удалены безвозвратно.",
+      "Очистить",
       () => dispatch(clearAll())
     );
   };

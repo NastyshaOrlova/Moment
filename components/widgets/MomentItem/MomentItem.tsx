@@ -1,6 +1,7 @@
 import { Icon } from "@/components/ui";
 import { RootState } from "@/store";
 import { deleteMoment } from "@/store/slices/diarySlice";
+import { confirmAction } from "@/utils/alerts";
 import { Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { styles } from "./MomentItem.style";
@@ -24,7 +25,12 @@ export function MomentItem({
   const isDayCompleted = completedDays.includes(dayName);
 
   const handleDeleteMoment = () => {
-    dispatch(deleteMoment({ dayName, momentId }));
+    confirmAction(
+      "Удалить момент?",
+      "Момент будет удален безвозвратно.",
+      "Удалить",
+      () => dispatch(deleteMoment({ dayName, momentId }))
+    );
   };
 
   return (
