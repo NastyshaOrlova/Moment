@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui";
+import { Button, Icon } from "@/components/ui";
 import { DaysList } from "@/components/widgets";
 import { RootState } from "@/store";
 import { clearAll } from "@/store/slices/diarySlice";
@@ -37,6 +37,9 @@ export default function AllDaysScreen() {
         <Button title="Скачать" onPress={handleDownload} variant="primary" />
         <Button title="Очистить" onPress={handleClearAll} variant="primary" />
       </View>
+      <View style={styles.heart}>
+        <Icon name={"heart"} />
+      </View>
     </View>
   );
 }
@@ -52,5 +55,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     gap: 15,
     marginTop: 20,
+  },
+  heart: {
+    position: "absolute",
+    bottom: 20,
+    right: 20,
+    width: 35,
+    height: 35,
   },
 });

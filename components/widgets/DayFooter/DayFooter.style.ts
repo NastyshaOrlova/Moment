@@ -6,7 +6,7 @@ export const styles = StyleSheet.create({
     backgroundColor: Colors.todo,
     maxWidth: 700,
     width: "100%",
-    height: 60,
+    height: 80,
     alignSelf: "center",
     justifyContent: "center",
     padding: 12,
