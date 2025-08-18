@@ -4,12 +4,7 @@ import { DayFooter } from "@/components/widgets/DayFooter";
 import { Colors, dayTitles } from "@/constants";
 import { RootState } from "@/store";
 import { useLocalSearchParams } from "expo-router";
-import {
-  Keyboard,
-  StyleSheet,
-  TouchableWithoutFeedback,
-  View,
-} from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import { useSelector } from "react-redux";
 
 export default function DayScreen() {
@@ -22,16 +17,16 @@ export default function DayScreen() {
   );
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-      <View style={styles.container}>
-        <DayHeader
-          title={dayTitle}
-          isCompleted={completedDays.includes(dayName as string)}
-        />
+    <View style={styles.container}>
+      <DayHeader
+        title={dayTitle}
+        isCompleted={completedDays.includes(dayName as string)}
+      />
+      <ScrollView keyboardShouldPersistTaps="handled" style={styles.scrollView}>
         <DayContent dayName={dayName as string} />
-        <DayFooter dayName={dayName as string} />
-      </View>
-    </TouchableWithoutFeedback>
+      </ScrollView>
+      <DayFooter dayName={dayName as string} />
+    </View>
   );
 }
 
@@ -41,5 +36,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: Colors.background,
     paddingTop: 28,
+  },
+  scrollView: {
+    flex: 1,
+    width: "100%",
   },
 });
