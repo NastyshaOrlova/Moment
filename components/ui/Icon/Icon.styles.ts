@@ -32,4 +32,9 @@ export const iconStyles = {
     height: 32,
     opacity: 0.9,
   },
+  sun: {
+    width: 20,
+    height: 20,
+    tintColor: Colors.minText,
+  },
 };
