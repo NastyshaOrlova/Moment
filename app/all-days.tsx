@@ -5,7 +5,7 @@ import { clearAll } from "@/store/slices/diarySlice";
 import { downloadWeeklyReport } from "@/utils/";
 import { confirmAction } from "@/utils/alerts";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { Colors } from "../constants";
 
@@ -38,6 +38,10 @@ export default function AllDaysScreen() {
         <Button title="Скачать" onPress={handleDownload} variant="primary" />
         <Button title="Очистить" onPress={handleClearAll} variant="primary" />
       </View>
+      <Text style={styles.helpText}>
+        В воскресенье утром, когда проснешься сначала: скачай файл, очисти
+        неделю, добавь время подъема.
+      </Text>
       <View style={styles.heart}>
         <Icon name={"heart"} />
       </View>
@@ -63,5 +67,13 @@ const styles = StyleSheet.create({
     right: 20,
     width: 35,
     height: 35,
+  },
+  helpText: {
+    fontSize: 14,
+    color: Colors.text,
+    textAlign: "center",
+    marginTop: 13,
+    width: 370,
+    opacity: 0.5,
   },
 });
