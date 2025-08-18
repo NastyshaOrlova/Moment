@@ -9,7 +9,8 @@ interface IconProps {
     | "arrowBottom"
     | "delete"
     | "heart"
-    | "sun";
+    | "sun"
+    | "edit";
   onPress?: () => void;
   hidden?: boolean;
 }
@@ -45,6 +46,7 @@ function getIconSource(name: IconProps["name"]) {
     delete: require("@/assets/images/IconDelete.png"),
     heart: require("@/assets/images/IconHeart.png"),
     sun: require("@/assets/images/IconSun.png"),
+    edit: require("@/assets/images/IconEdit.png"),
   } as const;
   return icons[name];
 }
