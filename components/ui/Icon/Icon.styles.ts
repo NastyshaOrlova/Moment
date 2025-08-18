@@ -27,4 +27,9 @@ export const iconStyles = {
     tintColor: Colors.grey,
     marginLeft: 5,
   },
+  heart: {
+    width: 32,
+    height: 32,
+    opacity: 0.9,
+  },
 };

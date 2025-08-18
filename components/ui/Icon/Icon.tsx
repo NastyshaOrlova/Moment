@@ -2,7 +2,7 @@ import { Image, TouchableOpacity } from "react-native";
 import { iconStyles, styles } from "./Icon.styles";
 
 interface IconProps {
-  name: "done" | "doubleDone" | "arrow" | "arrowBottom" | "delete";
+  name: "done" | "doubleDone" | "arrow" | "arrowBottom" | "delete" | "heart";
   onPress?: () => void;
   hidden?: boolean;
 }
@@ -36,6 +36,7 @@ function getIconSource(name: IconProps["name"]) {
     arrow: require("@/assets/images/IconArrow.png"),
     arrowBottom: require("@/assets/images/IconArrowBottom.png"),
     delete: require("@/assets/images/IconDelete.png"),
+    heart: require("@/assets/images/IconHeart.png"),
   } as const;
   return icons[name];
 }
