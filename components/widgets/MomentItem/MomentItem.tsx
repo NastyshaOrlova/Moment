@@ -30,7 +30,9 @@ export function MomentItem({
   return (
     <View style={styles.container}>
       <Text style={styles.bullet}>-</Text>
-      <Text style={styles.description}>{description}</Text>
+      <Text style={styles.description} selectable={true}>
+        {description}
+      </Text>
       <Icon
         name="delete"
         onPress={handleDeleteMoment}
