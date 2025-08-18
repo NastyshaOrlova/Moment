@@ -5,6 +5,7 @@ export const Colors = {
   accent: "#190933",
   tertiary: "#FFF5E0",
   grey: "#f7cacaff",
+  minText: "#d8b09bff",
 
   // Фоны
   background: "#f2d9c1ff",

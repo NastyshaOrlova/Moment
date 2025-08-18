@@ -22,4 +22,14 @@ export const styles = StyleSheet.create({
     fontSize: 17,
     color: Colors.text,
   },
+  sundayLabel: {
+    fontSize: 10,
+    color: Colors.minText,
+    paddingBlockStart: 2.5,
+  },
+  sundayContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 5,
+  },
 });

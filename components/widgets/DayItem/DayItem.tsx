@@ -28,6 +28,12 @@ export function DayItem({
     >
       <View style={styles.titleContainer}>
         <Text style={styles.baseText}>{title}</Text>
+        {dayName === "sunday" && (
+          <View style={styles.sundayContainer}>
+            <Text style={styles.sundayLabel}>RD Собери данные</Text>
+            <Icon name="sun" />
+          </View>
+        )}
         {isCompleted && <Icon name="doubleDone" />}
       </View>
       <Icon name="arrow" />
