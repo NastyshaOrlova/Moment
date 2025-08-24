@@ -34,31 +34,50 @@ export const downloadWeeklyReport = async (daysData: DaysData) => {
   }
 };
 
+export const getDaysOfWeekWithDates = () => {
+  const today = new Date();
+
+  const lastSunday = new Date(today);
+  lastSunday.setDate(today.getDate() - 7);
+
+  const baseDays = [
+    { name: "sunday", title: "Воскресенье RD" },
+    { name: "monday", title: "Понедельник" },
+    { name: "tuesday", title: "Вторник" },
+    { name: "wednesday", title: "Среда" },
+    { name: "thursday", title: "Четверг" },
+    { name: "friday", title: "Пятница" },
+    { name: "saturday", title: "Суббота" },
+  ];
+
+  return baseDays.map((day, index) => {
+    const date = new Date(lastSunday);
+    date.setDate(lastSunday.getDate() + index);
+    return {
+      ...day,
+      date: date.toLocaleDateString("ru-RU"),
+    };
+  });
+};
+
 export const generateReportText = (daysData: DaysData): string => {
-  const dayTranslations: { [key: string]: string } = {
-    monday: "Понедельник",
-    tuesday: "Вторник",
-    wednesday: "Среда",
-    thursday: "Четверг",
-    friday: "Пятница",
-    saturday: "Суббота",
-    sunday: "Воскресенье",
-  };
+  const weekDays = getDaysOfWeekWithDates();
+  let reportText = "";
 
-  let reportText = `Создан: ${new Date().toLocaleDateString()}\n`;
-  reportText += `Отчет за неделю:\n`;
+  weekDays.forEach((dayInfo) => {
+    const dayData = daysData[dayInfo.name];
 
-  Object.entries(daysData).forEach(([dayName, dayData]) => {
-    const russianDayName = dayTranslations[dayName] || dayName;
-    reportText += `${russianDayName}:\n`;
+    if (dayData) {
+      reportText += `${dayInfo.title}(${dayInfo.date}):\n`;
 
-    if (dayData.moments && dayData.moments.length > 0) {
-      dayData.moments.forEach((moment, index) => {
-        reportText += `${index + 1}. ${moment.description}\n`;
-      });
+      if (dayData.moments && dayData.moments.length > 0) {
+        dayData.moments.forEach((moment, index) => {
+          reportText += `${index + 1}. ${moment.description}\n`;
+        });
+      }
+
+      reportText += `\n`;
     }
-
-    reportText += `\n`;
   });
 
   return reportText;
