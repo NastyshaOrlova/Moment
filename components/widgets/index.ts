@@ -5,3 +5,5 @@ export { DaysList } from "./DaysList";
 export { Loading } from "./Loading";
 export { MomentItem } from "./MomentItem";
 export { MomentsList } from "./MomentsList";
+export { ZeitContent } from "./ZeitContent";
+export { ZeitHeader } from "./ZeitHeader";

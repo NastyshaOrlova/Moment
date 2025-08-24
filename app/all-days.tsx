@@ -4,6 +4,7 @@ import { RootState } from "@/store";
 import { clearAll } from "@/store/slices/diarySlice";
 import { downloadWeeklyReport } from "@/utils/";
 import { confirmAction } from "@/utils/alerts";
+import { router } from "expo-router";
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,6 +18,9 @@ export default function AllDaysScreen() {
   );
 
   const daysData = useSelector((state: RootState) => state.diary.days);
+  const contentZeitgeist = useSelector(
+    (state: RootState) => state.zeitgeist.content
+  );
 
   const handleClearAll = () => {
     confirmAction(
@@ -28,7 +32,7 @@ export default function AllDaysScreen() {
   };
 
   const handleDownload = () => {
-    downloadWeeklyReport(daysData);
+    downloadWeeklyReport(daysData, contentZeitgeist);
   };
 
   return (
@@ -43,7 +47,7 @@ export default function AllDaysScreen() {
         неделю, добавь время подъема.
       </Text>
       <View style={styles.heart}>
-        <Icon name={"heart"} />
+        <Icon name={"heart"} onPress={() => router.push("/zeitgeist")} />
       </View>
     </View>
   );

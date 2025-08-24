@@ -1,19 +1,23 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { configureStore } from "@reduxjs/toolkit";
+import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { persistReducer, persistStore } from "redux-persist";
 import diaryReducer from "./slices/diarySlice";
+import zeitgeistReducer from "./slices/zeitgeistSlice";
+
+const rootReducer = combineReducers({
+  diary: diaryReducer,
+  zeitgeist: zeitgeistReducer,
+});
 
 const persistConfig = {
-  key: "diary",
+  key: "root",
   storage: AsyncStorage,
 };
 
-const persistedDiaryReducer = persistReducer(persistConfig, diaryReducer);
+const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: {
-    diary: persistedDiaryReducer,
-  },
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
@@ -24,5 +28,5 @@ export const store = configureStore({
 
 export const persistor = persistStore(store);
 
-export type RootState = ReturnType<typeof store.getState>;
+export type RootState = ReturnType<typeof rootReducer>;
 export type AppDispatch = typeof store.dispatch;

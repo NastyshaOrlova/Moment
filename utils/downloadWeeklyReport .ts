@@ -13,9 +13,12 @@ interface DaysData {
   };
 }
 
-export const downloadWeeklyReport = async (daysData: DaysData) => {
+export const downloadWeeklyReport = async (
+  daysData: DaysData,
+  contentZeitgeist: string
+) => {
   try {
-    const reportContent = generateReportText(daysData);
+    const reportContent = generateReportText(daysData, contentZeitgeist);
     const fileName = `weekly_report.txt`;
     const fileUri = FileSystem.documentDirectory + fileName;
 
@@ -60,9 +63,12 @@ export const getDaysOfWeekWithDates = () => {
   });
 };
 
-export const generateReportText = (daysData: DaysData): string => {
+export const generateReportText = (
+  daysData: DaysData,
+  contentZeitgeist: string
+): string => {
   const weekDays = getDaysOfWeekWithDates();
-  let reportText = "";
+  let reportText = "Мой план:\n" + contentZeitgeist + "\n\n";
 
   weekDays.forEach((dayInfo) => {
     const dayData = daysData[dayInfo.name];

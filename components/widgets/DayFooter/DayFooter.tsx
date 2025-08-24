@@ -1,5 +1,6 @@
 import { Button, Icon } from "@/components/ui";
 import { RootState } from "@/store";
+import { router } from "expo-router";
 import { Text, View } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { completeDay, uncompleteDay } from "../../../store/slices/diarySlice";
@@ -39,7 +40,7 @@ export function DayFooter({ dayName }: { dayName: string }) {
             onPress={handleComplete}
             variant="secondary"
           />
-          <Icon name={"heart"} />
+          <Icon name={"heart"} onPress={() => router.push("/zeitgeist")} />
         </View>
       )}
     </View>

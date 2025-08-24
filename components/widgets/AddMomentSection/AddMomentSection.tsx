@@ -30,7 +30,11 @@ export function AddMomentSection({ dayName }: AddMomentSectionProps) {
 
   return (
     <View>
-      <TextArea value={inputText} onChangeText={setInputText} />
+      <TextArea
+        value={inputText}
+        placeholder="Что делала?"
+        onChangeText={setInputText}
+      />
       <Button
         title="Добавить момент"
         variant="secondary"

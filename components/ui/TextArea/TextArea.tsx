@@ -4,16 +4,17 @@ import { styles } from "./TextArea.style";
 
 interface TextAreaProps {
   value: string;
+  placeholder: string;
   onChangeText: (text: string) => void;
 }
 
-export function TextArea({ value, onChangeText }: TextAreaProps) {
+export function TextArea({ value, placeholder, onChangeText }: TextAreaProps) {
   return (
     <TextInput
       style={styles.textArea}
       value={value}
       onChangeText={onChangeText}
-      placeholder="Что делала?"
+      placeholder={placeholder}
       multiline={true}
       textAlignVertical="top"
     />

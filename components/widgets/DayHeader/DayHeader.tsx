@@ -10,10 +10,7 @@ interface DayHeaderProps {
 
 export function DayHeader({ title, isCompleted }: DayHeaderProps) {
   return (
-    <TouchableOpacity
-      style={[styles.container]}
-      onPress={() => router.replace("/all-days")}
-    >
+    <TouchableOpacity style={[styles.container]} onPress={() => router.back()}>
       <View style={styles.titleContainer}>
         <Text style={styles.baseText}>{title}</Text>
         {isCompleted && <Icon name="doubleDone" />}
